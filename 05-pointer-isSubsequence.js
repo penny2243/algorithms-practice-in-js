@@ -14,6 +14,36 @@ isSubsequence('abc', 'bac'); // false (order matters)
 */
 
 function isSubsequence(sub, string) {
+  if (sub.length === 0) {
+    return true;
+  }
+  let subCur = 0;
+  let strCur = 0;
+  while(strCur < string.length) {
+    if (sub[subCur] === string[strCur]) {
+      subCur++;
+    }
+    if(subCur === sub.length) {
+      return true;
+    }
+    strCur++;
+  }
+  return false;
+}
+
+
+
+// technique: pointer
+// complexity: O(n)
+
+/* 變化題： substring
+ex.
+isSubstring('hello', 'hello Dear'); // true
+isSubsequence('book', 'brooklyn'); // false
+isSubsequence('abcdefg', 'def'); // true (order matters)
+*/
+
+function isSubstring(sub, string) {
   let left = 0;
   let right = string.length - 1;
   const subStart = sub[0];
@@ -36,6 +66,3 @@ function isSubsequence(sub, string) {
   };
   return false;
 }
-
-// technique: pointer
-// complexity: O(n)
